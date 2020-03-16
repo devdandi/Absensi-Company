@@ -19,24 +19,33 @@
     <div class="row">
     	<div class="card mx-auto p-5 mt-5 shadow p-3 mb-5 bg-white rounded rounded-top">
     		<div class="card-body">
-    				<h2 class="text-center">Masuk</h2>
-    			<form>
+    			<h2 class="text-center">Masuk</h2>
+    			<?php 
+    			if (isset($_GET['l'])) {
+    				echo '<small style="color: red">Email atau password salah</small>';
+    			}else if(isset($_GET['m'])) {
+    				echo '<small style="color: red">Login terlebih dahulu</small>';
+    			}else if(isset($_GET['o'])) {
+    				echo '<small style="color: green">Berhasil logout</small>';
+    			}
+    			 ?>
+    			<form method="post" action="<?php echo base_url('/') ?>">
 				  <div class="form-group">
-				    <input type="email" placeholder="Email atau Username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+				    <input type="text" name="email" id="email" placeholder="Email atau Username" required="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
 				    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 				  </div>
 				  <div class="form-group">
-				    <input type="password" class="form-control" placeholder="Password" id="exampleInputPassword1">
+				    <input type="password" id="password" name="password" class="form-control" required="" placeholder="Password" id="exampleInputPassword1">
 				  </div>
 				  <div class="form-group form-check">
-				    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+				    <input type="checkbox" class="form-check-input" name="remember" id="exampleCheck1">
 				    <label class="form-check-label" for="exampleCheck1">Ingat Saya ?</label>
 				  </div>
-				  <button type="submit" class="btn btn-primary form-control">Masuk</button>
+				  <button type="submit" name="submit" class="btn btn-primary form-control">Masuk</button>
 				  <a href="<?php echo base_url('forgot-password') ?>">Lupa Password</a>
 				</form>
     		</div>
-    		<small style="color: red">* Khusus untuk karyawan Dandi Ramdani S.Cbl, M.Kom</small>
+    		<!-- <small style="color: red">* Khusus untuk karyawan Dandi Ramdani S.Cbl, M.Kom</small> -->
     	</div>
     </div>
     </div>
